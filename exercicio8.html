@@ -1,14 +1,90 @@
-var nomeAlunos = []
-var opcaoMenu = 1
-var matricula = 2
-var nota = 3
+var nomeAluno;
+var opcaoMenu;
+var numeroMatricula;
+var quantidadeNotas;
+var notasAlunos = [];
+var calculo;
+var somaNotas = 0;
+var mediaNotas;
 
 do {
 
     console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
     console.log("X MENU DE CADASTRO E REGISTRO DE ALUNOS X")
     console.log("X  Digite 1 para cadastrar o aluno(a)   X")
-    console.log("X  Digite 2 para gerar o registro       X")
+    console.log("X  Digite 2 para gerar o relatório      X")
     console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+    console.log("Qual menu gostaria de acessar?")
+    var opcaoMenu = Number(prompt());
+
+    if(opcaoMenu == 1) {
+        console.log("Entrei na opção de cadastrar aluno!!")
+
+        console.log("Insira o nome do aluno(a)")
+       var nomeAluno = prompt(`Insira o nome do aluno(a): `)
+        //prompt, e o prompt pegando a variavel nomeAluno
+        console.log("Insira a matricula do aluno(a)")
+       var numeroMatricula = Number(prompt(`Insira a matricula do aluno(a): `))
+        //criar variavel de numeroMatricula, prompt pegando a variavel numeroMatricula
+        console.log("Quantas notas você vai precisar cadastrar para esse aluno?")
+       var quantidadeNotas =  Number(prompt(`Quantas notas você vai precisar cadastrar para esse aluno? `))
+        //criar variavel quantidadeNotas, prompt pegando a variavel quantidadeNotas
+        console.log(`Esses são os resultados: 
+        Nome: ${nomeAluno} 
+        Matricula: ${numeroMatricula}, 
+        Notas: ${quantidadeNotas}`)
+        
+        for(i = 0; i < quantidadeNotas; i++){
+            console.log(`Insira a nota do aluno Nota ${i+1} de ${quantidadeNotas}`)
+            var calculo = Number(prompt(`Digite a nota: `));
+
+            notasAlunos.push(calculo);
+            
+            console.log(`A nota total é: ${(notasAlunos)}`)
+        }
+
+        for(x = 0; x < notasAlunos.length; x++) {
+            somaNotas += notasAlunos[x];
+        }
+
+        console.log(`A nota total é: ${somaNotas}`)
+        
+        opcaoMenu = 0
+
+    } else if(opcaoMenu == 2) {
+        console.log("XXXXXXXXXX RELATÓRIO DO ALUNO(a) XXXXXXXXXX")
+
+        mediaNotas = somaNotas / quantidadeNotas
+        
+
+        console.log(`
+        Nome do aluno: ${nomeAluno}
+        Matricula: ${numeroMatricula}
+        Notas: ${notasAlunos}
+        Média: ${mediaNotas}`)
+
+
+        if(mediaNotas >= 7){
+            console.log("O aluno(a) está aprovado(a)")
+        }
+
+
+        else if(mediaNotas >= 5 && mediaNotas < 7){
+            console.log("O aluno(a) está de recuperação")
+        }
+        
+
+        else {
+            console.log("O aluno(a) está reprovado(a)")
+        }
+        
+        /* var somaNotas = 0;
+        opcaoMenu = 0*/
+        break
+        
+    } else {
+        console.log("Essa opção não está dispoível, digite 1 para cadastrar o aluno(a) ou 2 para gerar o relatório")
+    }
 
 } while (opcaoMenu == 0)
