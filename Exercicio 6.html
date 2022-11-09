@@ -1,0 +1,46 @@
+var nome = prompt((`Digite o seu nome: ${nome}`))
+var dinheiroNoBolso = Number(prompt((`Digite o seu saldo: ${dinheiroNoBolso}`)))
+
+//prompt (`Digite o seu nome: ${nome}`)
+//prompt (`Digite o seu saldo: ${dinheiroNoBolso}`)
+
+let disney = 15000
+let madrid = 12000
+let maceio = 8000
+let ribeiraoPreto = 5000
+
+let lugarViagem = parseInt(prompt(
+	`Escreva o número do lugar para onde você quer ir: 
+	1) Disney
+	2) Madrid
+	3) Maceió
+	4) Ribeirão preto  
+`))
+
+
+
+switch (lugarViagem) {
+  case 1:
+	lugarViagem = disney
+	break;
+  case 2:
+	lugarViagem = madrid
+	break;
+  case 3:
+	lugarViagem = maceio
+	break;
+  case 4:
+	lugarViagem = ribeiraoPreto
+	break;
+ }
+
+
+let troco = dinheiroNoBolso - lugarViagem
+if(troco <0){
+   troco = troco * -1
+   alert(`Saldo insuficiente para viajar: falta ${troco}`)
+
+}
+else{
+   alert(`Saldo suficiente para viajar e seu troco é de: ${troco}`)
+}
